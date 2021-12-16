@@ -37,12 +37,46 @@ const myReduce = function(collection, callback, acc) {
 
 function myFind(collection, predicate){
     let newCollection = inputStandard(collection)
+    let target
+    for (let i = 0; i < newCollection.length; i++){
+        if(predicate(newCollection[i])){
+            return target = newCollection[i]
+        }
+    }return target
+}
+
+function myFilter(collection, predicate){
+    let newCollection = inputStandard(collection)
     let filteredArray = []
     for (let i = 0; i < newCollection.length; i++){
-        let result = predicate(newCollection[i])
-        if(result){
+        if(predicate(newCollection[i])){
             filteredArray.push(newCollection[i])
-        }return filteredArray
+        }
+    }return filteredArray
+}
+
+function mySize(collection){
+    let newCollection = inputStandard(collection)
+    return newCollection.length
+}
+
+function checkArray(data){
+    if(Array.isArray(data)){
+        return data.slice
+    } else{
+        return [data]
     }
 }
 
+const arr = [3,2,3,4,5,6]
+myFirst(arr, 3)
+
+function myFirst(array, n){
+    let arrayStandard = checkArray(array)
+    let result
+    if(!n){
+        result = arrayStandard[0]
+    } else{
+        result = arrayStandard.slice[0, n]
+    } return result
+}
