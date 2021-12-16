@@ -77,6 +77,7 @@ function myFirst(array, n){
     if(!n){
         result = arrayStandard[0]
     } else{
-        result = arrayStandard.slice[0, n]
+        result = arrayStandard.slice[0, n - 1]
     } return result
 }
+
