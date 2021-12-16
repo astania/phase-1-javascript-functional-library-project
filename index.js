@@ -1,9 +1,9 @@
 function inputStandard(data) {
     //checks if the input is an array.
     if (Array.isArray(data)) {
-    //if so, return a copy of the array
+        //if so, return a copy of the array
         return data.slice()
-    // if not, return a new array of the objects values     
+        // if not, return a new array of the objects values     
     } else {
         return Object.values(data)
     }
@@ -24,9 +24,9 @@ function myMap(collection, callback) {
     } return result
 }
 
-const myReduce = function(collection, callback, acc) {
+const myReduce = function (collection, callback, acc) {
     let newCollection = inputStandard(collection)
-    if(!acc){
+    if (!acc) {
         acc = newCollection[0]
         newCollection = newCollection.slice(1)
     }
@@ -35,52 +35,67 @@ const myReduce = function(collection, callback, acc) {
     } return acc
 }
 
-function myFind(collection, predicate){
+function myFind(collection, predicate) {
     let newCollection = inputStandard(collection)
     let target
-    for (let i = 0; i < newCollection.length; i++){
-        if(predicate(newCollection[i])){
+    for (let i = 0; i < newCollection.length; i++) {
+        if (predicate(newCollection[i])) {
             return target = newCollection[i]
         }
-    }return target
+    } return target
 }
 
-function myFilter(collection, predicate){
+function myFilter(collection, predicate) {
     let newCollection = inputStandard(collection)
     let filteredArray = []
-    for (let i = 0; i < newCollection.length; i++){
-        if(predicate(newCollection[i])){
+    for (let i = 0; i < newCollection.length; i++) {
+        if (predicate(newCollection[i])) {
             filteredArray.push(newCollection[i])
         }
-    }return filteredArray
+    } return filteredArray
 }
 
-function mySize(collection){
+function mySize(collection) {
     let newCollection = inputStandard(collection)
     return newCollection.length
 }
 
-function checkArray(data){
-    if(Array.isArray(data)){
+function checkArray(data) {
+    if (Array.isArray(data)) {
         return data.slice
-    } else{
+    } else {
         return [data]
     }
 }
 
 
-function myFirst(array, n){
-    if(n){
+function myFirst(array, n) {
+    if (n) {
         return array.slice(0, n)
-    } else{
+    } else {
         return array[0]
-    } 
+    }
 }
 
-function myLast(array, n){
-    if(n){
-        return array.slice(n, array.length-1)
-    } else{
-        return array[array.length-1]
-    } 
+function myLast(array, n) {
+    if (n) {
+        return array.slice(-n, array.length)
+    } else {
+        return array[array.length - 1]
+    }
+}
+
+function myKeys(obj){
+    const result = []
+    for(let key in obj){
+        result.push(String(key))
+    } return result
+}
+
+function myValues(obj){
+    const result = []
+    debugger
+    for(let key in obj){
+       result.push(obj[key])
+    } return result
 }
