@@ -24,13 +24,25 @@ function myMap(collection, callback) {
     } return result
 }
 
-const myReduce = function(collection, callback, acc = collection[0]) {
+const myReduce = function(collection, callback, acc) {
     let newCollection = inputStandard(collection)
-    let result = acc
+    if(!acc){
+        acc = newCollection[0]
+        newCollection = newCollection.slice(1)
+    }
     for (let i = 0; i < newCollection.length; i++) {
-        result =+ (callback(acc, newCollection[i], newCollection))
-    } return result
+        acc = (callback(acc, newCollection[i], newCollection))
+    } return acc
 }
 
-
+function myFind(collection, predicate){
+    let newCollection = inputStandard(collection)
+    let filteredArray = []
+    for (let i = 0; i < newCollection.length; i++){
+        let result = predicate(newCollection[i])
+        if(result){
+            filteredArray.push(newCollection[i])
+        }return filteredArray
+    }
+}
 
