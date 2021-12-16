@@ -68,16 +68,19 @@ function checkArray(data){
     }
 }
 
-const arr = [3,2,3,4,5,6]
-myFirst(arr, 3)
 
 function myFirst(array, n){
-    let arrayStandard = checkArray(array)
-    let result
-    if(!n){
-        result = arrayStandard[0]
+    if(n){
+        return array.slice(0, n)
     } else{
-        result = arrayStandard.slice[0, n - 1]
-    } return result
+        return array[0]
+    } 
 }
 
+function myLast(array, n){
+    if(n){
+        return array.slice(n, array.length-1)
+    } else{
+        return array[array.length-1]
+    } 
+}
