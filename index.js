@@ -1,28 +1,36 @@
-function myEach(collection, callback) {
-    let newCollection = Array.from(collection)
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < newCollection.length; i++) {
-            callback(newCollection[i])
-        } return collection
+function inputStandard(data) {
+    //checks if the input is an array.
+    if (Array.isArray(data)) {
+    //if so, return a copy of the array
+        return data.slice()
+    // if not, return a new array of the objects values     
     } else {
-        return myEach(Object.values(collection), callback)
+        return Object.values(data)
     }
+}
+
+function myEach(collection, callback) {
+    let newCollection = inputStandard(collection)
+    for (let i = 0; i < newCollection.length; i++) {
+        callback(newCollection[i])
+    } return collection
 }
 
 function myMap(collection, callback) {
-    let newCollection = Array.from(collection)
+    let newCollection = inputStandard(collection)
     let result = []
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < newCollection.length; i++) {
-            result.push(callback(newCollection[i]))
-        } return result
-
-    } else {
-        return myMap(Object.values(collection), callback)
-    }
+    for (let i = 0; i < newCollection.length; i++) {
+        result.push(callback(newCollection[i]))
+    } return result
 }
 
-function myReduce() { }
+const myReduce = function(collection, callback, acc = collection[0]) {
+    let newCollection = inputStandard(collection)
+    let result = acc
+    for (let i = 0; i < newCollection.length; i++) {
+        result =+ (callback(acc, newCollection[i], newCollection))
+    } return result
+}
 
 
 
